@@ -1,0 +1,16 @@
+name: masakari-monitors
+subordinate: true
+maintainer: OpenStack Charmers <openstack-charmers@lists.ubuntu.com>
+summary: Deploys masakari monitors
+description: |
+  Deploys masakari monitors which interact with masakari api
+tags:
+  - openstack
+series:
+  - bionic
+requires:
+  identity-credentials:
+    interface: keystone-credentials
+  container:
+    interface: juju-info
+    scope: container
