@@ -31,14 +31,13 @@ class MasakariMonitorsCharm(charms_openstack.charm.OpenStackCharm):
     # List of packages to install for this charm
     packages = ['nova-common']
 
-    #services = ['masakari-hostmonitor', 'masakari-instancemonitor', 'masakari-processmonitor']
-    services = []
+    services = ['masakari-hostmonitor', 'masakari-instancemonitor', 'masakari-processmonitor']
 
     required_relations = ['identity-credentials']
 
     restart_map = {
-        '/etc/masakarimonitors/masakarimonitors.conf': services,
-        '/etc/masakarimonitors/process_list.yaml': services,
+        '/etc/monitors/masakari.conf': services,
+        '/etc/monitors/process_list.yaml': services,
     }
 
     release_pkg = 'nova-common'
@@ -69,9 +68,11 @@ class MasakariMonitorsCharm(charms_openstack.charm.OpenStackCharm):
                 'https://github.com/openstack/masakari-monitors.git', git_dir])
             subprocess.check_call([
                 'sudo', 'python3', 'setup.py', 'install'], cwd=git_dir)
-#        subprocess.check_call(['mkdir', '-p', '/var/lock/masakari', '/var/log/masakari', '/var/lib/masakari'])
-#        subprocess.check_call(['cp', 'templates/masakari-engine.service', '/lib/systemd/system'])
+        subprocess.check_call(['mkdir', '-p', '/var/lock/masakari', '/var/log/masakari', '/var/lib/masakari'])
+        subprocess.check_call(['cp', 'templates/masakari-hostmonitor.service', '/lib/systemd/system'])
+        subprocess.check_call(['cp', 'templates/masakari-instancemonitor.service', '/lib/systemd/system'])
+        subprocess.check_call(['cp', 'templates/masakari-processmonitor.service', '/lib/systemd/system'])
 #        subprocess.check_call(['cp', 'templates/wsgi.py', '/usr/local/lib/python3.6/dist-packages/masakari/api/openstack/wsgi.py'])
-#        subprocess.check_call(['systemctl', 'daemon-reload'])
+        subprocess.check_call(['systemctl', 'daemon-reload'])
 #        subprocess.check_call(['systemctl', 'start', 'masakari-engine'])
 #        subprocess.check_call(['cp', 'templates/api-paste.ini', '/etc/masakari/'])
