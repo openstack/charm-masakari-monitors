@@ -3,22 +3,18 @@ import socket
 import subprocess
 import tempfile
 
-import charmhelpers.core.hookenv as hookenv
 import charms_openstack.adapters
 import charms_openstack.charm
-import charms_openstack.ip as os_ip
 import charmhelpers.contrib.openstack.utils as ch_os_utils
 import charms.reactive.relations as relations
 
 charms_openstack.charm.use_defaults('charm.default-select-release')
 
+
 @charms_openstack.adapters.config_property
 def hostname(config):
     return socket.getfqdn()
 
-@charms_openstack.adapters.config_property
-def bob(config):
-    return socket.fqdn()
 
 class MasakariMonitorsCharm(charms_openstack.charm.OpenStackCharm):
 
@@ -31,13 +27,14 @@ class MasakariMonitorsCharm(charms_openstack.charm.OpenStackCharm):
     # List of packages to install for this charm
     packages = ['nova-common']
 
-    services = ['masakari-hostmonitor', 'masakari-instancemonitor', 'masakari-processmonitor']
+    services = ['masakari-hostmonitor', 'masakari-instancemonitor',
+                'masakari-processmonitor']
 
     required_relations = ['identity-credentials']
 
     restart_map = {
-        '/etc/monitors/masakari.conf': services,
-        '/etc/monitors/process_list.yaml': services,
+        '/etc/masakari/masakari.conf': services,
+        '/etc/masakari/process_list.yaml': services,
     }
 
     release_pkg = 'nova-common'
@@ -51,7 +48,8 @@ class MasakariMonitorsCharm(charms_openstack.charm.OpenStackCharm):
     }
 
     def request_credentials(self):
-        keystone_relation = relations.endpoint_from_flag('identity-credentials.connected')
+        keystone_relation = relations.endpoint_from_flag(
+            'identity-credentials.connected')
         keystone_relation.request_credentials(
             'masakari-monitors',
             project='services')
@@ -68,11 +66,16 @@ class MasakariMonitorsCharm(charms_openstack.charm.OpenStackCharm):
                 'https://github.com/openstack/masakari-monitors.git', git_dir])
             subprocess.check_call([
                 'sudo', 'python3', 'setup.py', 'install'], cwd=git_dir)
-        subprocess.check_call(['mkdir', '-p', '/var/lock/masakari', '/var/log/masakari', '/var/lib/masakari'])
-        subprocess.check_call(['cp', 'templates/masakari-hostmonitor.service', '/lib/systemd/system'])
-        subprocess.check_call(['cp', 'templates/masakari-instancemonitor.service', '/lib/systemd/system'])
-        subprocess.check_call(['cp', 'templates/masakari-processmonitor.service', '/lib/systemd/system'])
-#        subprocess.check_call(['cp', 'templates/wsgi.py', '/usr/local/lib/python3.6/dist-packages/masakari/api/openstack/wsgi.py'])
+        subprocess.check_call(
+            ['mkdir', '-p', '/var/lock/masakari', '/var/log/masakari',
+             '/var/lib/masakari'])
+        subprocess.check_call(
+            ['cp', 'templates/masakari-hostmonitor.service',
+             '/lib/systemd/system'])
+        subprocess.check_call(
+            ['cp', 'templates/masakari-instancemonitor.service',
+             '/lib/systemd/system'])
+        subprocess.check_call(
+            ['cp', 'templates/masakari-processmonitor.service',
+             '/lib/systemd/system'])
         subprocess.check_call(['systemctl', 'daemon-reload'])
-#        subprocess.check_call(['systemctl', 'start', 'masakari-engine'])
-#        subprocess.check_call(['cp', 'templates/api-paste.ini', '/etc/masakari/'])

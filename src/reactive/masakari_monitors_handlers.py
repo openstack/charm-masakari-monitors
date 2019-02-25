@@ -11,8 +11,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-import subprocess
-
 import charms_openstack.charm as charm
 import charms.reactive as reactive
 
@@ -25,10 +23,12 @@ charm.use_defaults(
     'config.changed',
     'update-status')
 
+
 @reactive.when('identity-credentials.connected')
 def request_credentials():
     with charm.provide_charm_instance() as charm_class:
         charm_class.request_credentials()
+
 
 @reactive.when('identity-credentials.available.auth')
 def render_config(*args):
