@@ -1,12 +1,10 @@
 import collections
 import socket
 import subprocess
-import tempfile
 
 import charmhelpers.fetch
 import charms_openstack.adapters
 import charms_openstack.charm
-import charmhelpers.contrib.openstack.utils as ch_os_utils
 import charms.reactive.relations as relations
 
 charms_openstack.charm.use_defaults('charm.default-select-release')
