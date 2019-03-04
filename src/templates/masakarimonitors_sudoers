@@ -1,0 +1,3 @@
+Defaults:masakarimonitors !requiretty
+
+masakarimonitors ALL = (root) NOPASSWD: /usr/bin/privsep-helper --config-file /etc/masakarimonitors/masakarimonitors.conf *
