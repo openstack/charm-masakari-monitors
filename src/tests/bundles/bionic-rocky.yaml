@@ -164,7 +164,7 @@ applications:
     charm: masakari-monitors
     series: bionic
   hacluster:
-    charm: cs:~gnuoy/hacluster-6
+    charm: cs:~gnuoy/hacluster-7
     options:
       corosync_transport: unicast
       cluster_count: 3
