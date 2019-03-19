@@ -62,8 +62,3 @@ class MasakariMonitorsCharm(charms_openstack.charm.OpenStackCharm):
     def install(self):
         charmhelpers.fetch.add_source('ppa:corey.bryant/bionic-stein')
         super(MasakariMonitorsCharm, self).install()
-        # XXX LY The need for this sudoers file is covering up a deficiency
-        #     elsewhere
-        subprocess.check_call(
-            ['cp', 'templates/masakarimonitors_sudoers',
-             '/etc/sudoers.d/masakarimonitors_sudoers'])
