@@ -35,7 +35,6 @@ def render_config(*args):
     """Render the configuration for charm when all the interfaces are
     available.
     """
-    print("Rendering ...")
     with charm.provide_charm_instance() as charm_class:
         charm_class.render_with_interfaces(args)
         charm_class.assess_status()

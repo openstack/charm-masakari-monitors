@@ -1,6 +1,5 @@
 import collections
 import socket
-import subprocess
 
 import charmhelpers.fetch
 import charms_openstack.adapters
