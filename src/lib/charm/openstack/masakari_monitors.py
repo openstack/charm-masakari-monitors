@@ -59,5 +59,6 @@ class MasakariMonitorsCharm(charms_openstack.charm.OpenStackCharm):
             project='services')
 
     def install(self):
-        charmhelpers.fetch.add_source('ppa:corey.bryant/bionic-stein')
+        #charmhelpers.fetch.add_source('ppa:corey.bryant/bionic-stein')
+        charmhelpers.fetch.add_source('ppa:gnuoy/bionic-stein')
         super(MasakariMonitorsCharm, self).install()
