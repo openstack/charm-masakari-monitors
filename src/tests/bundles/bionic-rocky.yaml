@@ -86,7 +86,7 @@ applications:
       block-device: "None"
       glance-api-version: 2
   keystone:
-    charm: cs:~gnuoy/keystone-36
+    charm: cs:~openstack-charmers-next/keystone
     series: bionic
     num_units: 1
     options:
@@ -142,7 +142,7 @@ applications:
     charm: cs:~openstack-charmers-next/rabbitmq-server
     num_units: 1
   masakari:
-    charm: cs:~gnuoy/masakari-2
+    charm: cs:~openstack-charmers-next/masakari
     series: bionic
     num_units: 1
     options:
@@ -164,7 +164,7 @@ applications:
     charm: masakari-monitors
     series: bionic
   hacluster:
-    charm: cs:~gnuoy/hacluster-7
+    charm: cs:~openstack-charmers-next/hacluster
     options:
       corosync_transport: unicast
       cluster_count: 3
