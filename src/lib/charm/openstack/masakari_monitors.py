@@ -1,7 +1,6 @@
 import collections
 import socket
 
-import charmhelpers.fetch
 import charms_openstack.adapters
 import charms_openstack.charm
 import charms.reactive.relations as relations
@@ -59,6 +58,4 @@ class MasakariMonitorsCharm(charms_openstack.charm.OpenStackCharm):
             project='services')
 
     def install(self):
-        # TODO: Stop using the PPA; https://bugs.launchpad.net/bugs/1838578
-        charmhelpers.fetch.add_source('ppa:gnuoy/bionic-stein')
         super(MasakariMonitorsCharm, self).install()
