@@ -165,7 +165,7 @@ applications:
     num_units: 3
     options:
       openstack-origin: cloud:bionic-rocky/proposed
-      vip: 10.5.110.1
+      evacuation-delay: 60
   ceph-mon:
     charm: ceph-mon
     num_units: 3
