@@ -156,6 +156,8 @@ applications:
       debug: true
       cpu-model: kvm64
       cpu-mode: custom
+      # Allow for more retries when testing ontop of openstack
+      config-flags: block_device_allocate_retries=120
   rabbitmq-server:
     charm: cs:~openstack-charmers-next/rabbitmq-server
     num_units: 1
@@ -165,22 +167,21 @@ applications:
     num_units: 3
     options:
       openstack-origin: cloud:bionic-rocky/proposed
-      evacuation-delay: 60
   ceph-mon:
-    charm: ceph-mon
+    charm: cs:~openstack-charmers-next/ceph-mon
     num_units: 3
     options:
       expected-osd-count: 3
   ceph-osd:
-    charm: ceph-osd
+    charm: cs:~openstack-charmers-next/ceph-osd
     constraints: mem=1G
     num_units: 3
     storage:
       osd-devices:  cinder,40G
   cinder-ceph:
-    charm: cinder-ceph
+    charm: cs:~openstack-charmers-next/cinder-ceph
   masakari-monitors:
-    charm: masakari-monitors
+    charm: ../../../masakari-monitors
     series: bionic
   hacluster:
     charm: cs:~openstack-charmers-next/hacluster
