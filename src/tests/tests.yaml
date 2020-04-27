@@ -15,8 +15,10 @@ gate_bundles:
 # - bionic-rocky-pacemaker-remote-ssl
   - bionic-stein-pacemaker-remote-ssl
   - bionic-train-pacemaker-remote-ssl
+  - bionic-ussuri-pacemaker-remote-ssl
+  - focal-ussuri-pacemaker-remote-ssl
 smoke_bundles:
-  - bionic-train-pacemaker-remote-ssl
+  - focal-ussuri-pacemaker-remote-ssl
 target_deploy_status:
   easyrsa:
     workload-status-message: Certificate Authority connected.
@@ -33,3 +35,6 @@ target_deploy_status:
   ceph-mon:
     workload-status: waiting
     workload-status-message: "Monitor bootstrapped but waiting for number of OSDs to reach expected-osd-count (3)"
+tests_options:
+  force_deploy:
+    - focal-ussuri-pacemaker-remote-ssl

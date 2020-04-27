@@ -9,6 +9,7 @@ tags:
 series:
   - bionic
   - eoan
+  - focal
 requires:
   identity-credentials:
     interface: keystone-credentials
