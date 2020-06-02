@@ -5,11 +5,12 @@ summary: Deploys masakari monitors
 description: |
   Deploys masakari monitors which interact with masakari api
 tags:
-  - openstack
+- openstack
 series:
-  - bionic
-  - eoan
-  - focal
+- bionic
+- eoan
+- focal
+- groovy
 requires:
   identity-credentials:
     interface: keystone-credentials
