@@ -47,6 +47,9 @@ class MasakariMonitorsCharm(charms_openstack.charm.OpenStackCharm):
             ('5', 'pike'),
             ('6', 'rocky'),
             ('7', 'stein'),
+            ('8', 'train'),
+            ('9', 'ussuri'),
+            ('10', 'victoria'),
         ]),
     }
 
