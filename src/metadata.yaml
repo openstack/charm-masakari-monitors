@@ -10,6 +10,7 @@ series:
 - bionic
 - focal
 - groovy
+- hirsute
 requires:
   identity-credentials:
     interface: keystone-credentials
