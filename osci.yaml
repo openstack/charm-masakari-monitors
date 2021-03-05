@@ -9,7 +9,9 @@
       - bionic-ussuri-pacemaker-remote-ssl
       - focal-ussuri-pacemaker-remote-ssl
       - focal-victoria-pacemaker-remote-ssl
+      - focal-wallaby-pacemaker-remote-ssl
       - groovy-victoria-pacemaker-remote-ssl
+      - hirsute-wallaby-pacemaker-remote-ssl
     vars:
       needs_charm_build: true
       charm_build_name: masakari-monitors
@@ -45,8 +47,20 @@
     vars:
       tox_extra_args: focal-victoria-pacemaker-remote-ssl
 - job:
+    name: focal-wallaby-pacemaker-remote-ssl
+    parent: func-target
+    dependencies: *smoke-jobs
+    vars:
+      tox_extra_args: focal-wallaby-pacemaker-remote-ssl
+- job:
     name: groovy-victoria-pacemaker-remote-ssl
     parent: func-target
     dependencies: *smoke-jobs
     vars:
       tox_extra_args: groovy-victoria-pacemaker-remote-ssl
+- job:
+    name: hirsute-wallaby-pacemaker-remote-ssl
+    parent: func-target
+    dependencies: *smoke-jobs
+    vars:
+      tox_extra_args: hirsute-wallaby-pacemaker-remote-ssl
