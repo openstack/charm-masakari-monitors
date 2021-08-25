@@ -1,3 +1,6 @@
+# WARNING: Maintained by Juju.
+# Any manual changes will be overridden.
+
 # Define the monitoring processes as follows:
 #    process_name: [Name of the process as it in 'ps -ef'.]
 #    start_command: [Start command of the process.]
@@ -13,10 +16,10 @@
 -
     # libvirt-bin
     process_name: /usr/sbin/libvirtd
-    start_command: systemctl start libvirt-bin
+    start_command: systemctl start libvirtd
     pre_start_command:
     post_start_command:
-    restart_command: systemctl restart libvirt-bin
+    restart_command: systemctl restart libvirtd
     pre_restart_command:
     post_restart_command:
     run_as_root: True
@@ -32,21 +35,21 @@
     run_as_root: True
 -
     # instancemonitor
-    process_name: /usr/local/bin/masakari-instancemonitor
-    start_command: systemctl start masakari-instancemonitor
+    process_name: /usr/bin/masakari-instancemonitor
+    start_command: systemctl start masakari-instance-monitor
     pre_start_command:
     post_start_command:
-    restart_command: systemctl restart masakari-instancemonitor
+    restart_command: systemctl restart masakari-instance-monitor
     pre_restart_command:
     post_restart_command:
     run_as_root: True
 -
     # hostmonitor
-    process_name: /usr/local/bin/masakari-hostmonitor
-    start_command: systemctl start masakari-hostmonitor
+    process_name: /usr/bin/masakari-hostmonitor
+    start_command: systemctl start masakari-host-monitor
     pre_start_command:
     post_start_command:
-    restart_command: systemctl restart masakari-hostmonitor
+    restart_command: systemctl restart masakari-host-monitor
     pre_restart_command:
     post_restart_command:
     run_as_root: True
