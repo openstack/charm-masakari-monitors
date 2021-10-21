@@ -105,7 +105,6 @@ applications:
     options:
       openstack-origin: cloud:bionic-ussuri
       worker-multiplier: 0.25
-    channel: candidate
   cinder:
     charm: cs:~openstack-charmers/cinder
     num_units: 1
@@ -113,7 +112,6 @@ applications:
       openstack-origin: cloud:bionic-ussuri
       block-device: "None"
       glance-api-version: 2
-    channel: candidate
   keystone:
     charm: cs:~openstack-charmers/keystone
     series: bionic
@@ -122,7 +120,6 @@ applications:
       admin-password: openstack
       openstack-origin: cloud:bionic-ussuri
       worker-multiplier: 0.25
-    channel: candidate
   mysql:
     charm: cs:~openstack-charmers/percona-cluster
     num_units: 1
@@ -130,7 +127,6 @@ applications:
       source: cloud:bionic-ussuri
       innodb-buffer-pool-size: 256M
       max-connections: 1000
-    channel: candidate
   neutron-api:
     charm: cs:~openstack-charmers/neutron-api
     num_units: 1
@@ -141,7 +137,6 @@ applications:
       neutron-security-groups: true
       openstack-origin: cloud:bionic-ussuri
       worker-multiplier: 0.25
-    channel: candidate
   neutron-gateway:
     charm: cs:~openstack-charmers/neutron-gateway
     num_units: 1
@@ -149,11 +144,9 @@ applications:
       bridge-mappings: physnet1:br-ex
       openstack-origin: cloud:bionic-ussuri
       worker-multiplier: 0.25
-    channel: candidate
   neutron-openvswitch:
     charm: cs:~openstack-charmers/neutron-openvswitch
     num_units: 0
-    channel: candidate
   nova-cloud-controller:
     charm: cs:~openstack-charmers/nova-cloud-controller
     num_units: 1
@@ -162,7 +155,6 @@ applications:
       openstack-origin: cloud:bionic-ussuri
       worker-multiplier: 0.25
       debug: true
-    channel: candidate
   nova-compute:
     charm: cs:~openstack-charmers/nova-compute
     num_units: 3
@@ -178,27 +170,23 @@ applications:
       cpu-mode: custom
       # Allow for more retries when testing ontop of openstack
       config-flags: block_device_allocate_retries=120
-    channel: candidate
   rabbitmq-server:
     charm: cs:~openstack-charmers/rabbitmq-server
     num_units: 1
     options:
       source: cloud:bionic-ussuri
-    channel: candidate
   masakari:
     charm: cs:~openstack-charmers/masakari
     series: bionic
     num_units: 3
     options:
       openstack-origin: cloud:bionic-ussuri
-    channel: candidate
   ceph-mon:
     charm: cs:~openstack-charmers/ceph-mon
     num_units: 3
     options:
       source: cloud:bionic-ussuri
       expected-osd-count: 3
-    channel: candidate
   ceph-osd:
     charm: cs:~openstack-charmers/ceph-osd
     constraints: mem=1G
@@ -207,10 +195,8 @@ applications:
       source: cloud:bionic-ussuri
     storage:
       osd-devices:  cinder,40G
-    channel: candidate
   cinder-ceph:
     charm: cs:~openstack-charmers/cinder-ceph
-    channel: candidate
   masakari-monitors:
     charm: ../../../masakari-monitors
     series: bionic
@@ -219,20 +205,16 @@ applications:
     options:
       corosync_transport: unicast
       cluster_count: 3
-    channel: candidate
   pacemaker-remote:
     charm: cs:~openstack-charmers/pacemaker-remote
     options:
       enable-stonith: False
       enable-resources: False
-    channel: candidate
   vault:
     num_units: 1
     charm: cs:~openstack-charmers/vault
-    channel: candidate
   placement:
     charm: cs:~openstack-charmers/placement
     num_units: 1
     options:
       openstack-origin: cloud:bionic-ussuri
-    channel: candidate
