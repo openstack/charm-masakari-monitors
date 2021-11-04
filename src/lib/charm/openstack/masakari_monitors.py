@@ -22,17 +22,14 @@ class MasakariMonitorsCharm(charms_openstack.charm.OpenStackCharm):
     release = 'rocky'
 
     # List of packages to install for this charm
-    packages = ['masakari-host-monitor', 'masakari-instance-monitor',
-                'masakari-process-monitor']
+    packages = ['masakari-host-monitor', 'masakari-instance-monitor']
 
-    services = ['masakari-host-monitor', 'masakari-instance-monitor',
-                'masakari-process-monitor']
+    services = ['masakari-host-monitor', 'masakari-instance-monitor']
 
     required_relations = ['identity-credentials']
 
     restart_map = {
         '/etc/masakarimonitors/masakarimonitors.conf': services,
-        '/etc/masakarimonitors/process_list.yaml': services,
     }
 
     release_pkg = 'masakari-monitors-common'
