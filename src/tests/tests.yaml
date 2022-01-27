@@ -13,25 +13,17 @@ configure:
   - zaza.openstack.charm_tests.masakari.setup.create_segments
 
 gate_bundles:
-  - bionic-stein
-  - bionic-ussuri
-  - focal-ussuri
-  - focal-victoria
-  - focal-wallaby
   - focal-xena
-  - hirsute-wallaby
   - impish-xena
 
 dev_bundles:
 # Rocky disabled until https://review.opendev.org/#/c/647756/ lands in
 # packaging
-  - bionic-rocky
-  - bionic-train
   - focal-yoga
   - jammy-yoga
 
 smoke_bundles:
-  - focal-ussuri
+  - focal-xena
 
 target_deploy_status:
   easyrsa:
@@ -52,6 +44,5 @@ target_deploy_status:
 
 tests_options:
   force_deploy:
-    - hirsute-wallaby
     - impish-xena
     - jammy-yoga
