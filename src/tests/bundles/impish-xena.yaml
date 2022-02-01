@@ -1,6 +1,8 @@
 variables:
   openstack-origin: &openstack-origin distro
 
+local_overlay_enabled: False
+
 series: impish
 
 comment:
@@ -83,7 +85,7 @@ applications:
       worker-multiplier: 0.25
     to:
       - '3'
-    channel: latest/edge
+    channel: yoga/edge
 
   cinder:
     charm: ch:cinder
@@ -94,7 +96,7 @@ applications:
       glance-api-version: 2
     to:
       - '4'
-    channel: latest/edge
+    channel: yoga/edge
 
   keystone:
     charm: ch:keystone
@@ -105,7 +107,7 @@ applications:
       worker-multiplier: 0.25
     to:
       - '5'
-    channel: latest/edge
+    channel: yoga/edge
 
   neutron-api:
     charm: ch:neutron-api
@@ -118,7 +120,7 @@ applications:
       worker-multiplier: 0.25
     to:
       - '6'
-    channel: latest/edge
+    channel: yoga/edge
 
   neutron-gateway:
     charm: ch:neutron-gateway
@@ -129,12 +131,12 @@ applications:
       worker-multiplier: 0.25
     to:
       - '7'
-    channel: latest/edge
+    channel: yoga/edge
 
   neutron-openvswitch:
     charm: ch:neutron-openvswitch
     num_units: 0
-    channel: latest/edge
+    channel: yoga/edge
 
   nova-cloud-controller:
     charm: ch:nova-cloud-controller
@@ -146,7 +148,7 @@ applications:
       debug: true
     to:
       - '23'
-    channel: latest/edge
+    channel: yoga/edge
 
   nova-compute:
     charm: ch:nova-compute
@@ -167,7 +169,7 @@ applications:
       - '8'
       - '9'
       - '10'
-    channel: latest/edge
+    channel: yoga/edge
 
   rabbitmq-server:
     charm: ch:rabbitmq-server
@@ -185,7 +187,7 @@ applications:
       - '12'
       - '13'
       - '14'
-    channel: latest/edge
+    channel: yoga/edge
 
   ceph-mon:
     charm: ch:ceph-mon
@@ -197,7 +199,7 @@ applications:
       - '15'
       - '16'
       - '17'
-    channel: latest/edge
+    channel: quincy/edge
 
   ceph-osd:
     charm: ch:ceph-osd
@@ -211,14 +213,14 @@ applications:
       - '18'
       - '19'
       - '20'
-    channel: latest/edge
+    channel: quincy/edge
 
   cinder-ceph:
     charm: ch:cinder-ceph
-    channel: latest/edge
+    channel: yoga/edge
 
   masakari-monitors:
-    charm: ../../masakari-monitors
+    charm: ../../../masakari-monitors.charm
 
   hacluster:
     charm: ch:hacluster
@@ -228,7 +230,7 @@ applications:
     channel: latest/edge
 
   pacemaker-remote:
-    charm: cs:~openstack-charmers-next/pacemaker-remote
+    charm: ch:pacemaker-remote
     options:
       enable-stonith: False
       enable-resources: False
@@ -247,7 +249,7 @@ applications:
       openstack-origin: *openstack-origin
     to:
       - '22'
-    channel: latest/edge
+    channel: yoga/edge
 
 relations:
 
