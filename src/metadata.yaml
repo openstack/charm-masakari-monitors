@@ -8,7 +8,7 @@ tags:
 - openstack
 series:
 - focal
-- impish
+- jammy
 requires:
   identity-credentials:
     interface: keystone-credentials
