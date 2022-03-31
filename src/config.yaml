@@ -3,3 +3,11 @@ options:
     type: string
     default: RegionOne
     description: OpenStack Region
+  config-flags:
+    type: string
+    default:
+    description: |
+      Setting multiple arbitrary config variables and these
+      will be converted into dictionary and masakarimonitors.conf will be populated
+      accordingly. This will enable an operator to have the flexibility for having
+      multiple arbitrary config flags.
