@@ -1,7 +1,7 @@
 variables:
   openstack-origin: &openstack-origin distro
 
-local_overlay_enabled: False
+local_overlay_enabled: True
 
 series: jammy
 
@@ -220,7 +220,7 @@ applications:
     channel: yoga/edge
 
   masakari-monitors:
-    charm: ../../../masakari-monitors.charm
+    charm: ../../../masakari-monitors_ubuntu-22.04-amd64.charm
 
   hacluster:
     charm: ch:hacluster
