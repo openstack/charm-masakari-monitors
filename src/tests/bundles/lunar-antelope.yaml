@@ -3,7 +3,7 @@ variables:
 
 local_overlay_enabled: True
 
-series: jammy
+series: lunar
 
 comment:
 - 'machines section to decide order of deployment. database sooner = faster'
@@ -218,7 +218,7 @@ applications:
     channel: latest/edge
 
   masakari-monitors:
-    charm: ../../../masakari-monitors_ubuntu-22.04-amd64_ubuntu-22.10-amd64.charm
+    charm: ../../../masakari-monitors_ubuntu-22.04-amd64_ubuntu-22.10-amd64_ubuntu-23.04-amd64.charm
 
   hacluster:
     charm: ch:hacluster

@@ -1,9 +1,9 @@
 variables:
-  openstack-origin: &openstack-origin distro
+  openstack-origin: &openstack-origin cloud:jammy-antelope
 
 local_overlay_enabled: True
 
-series: kinetic
+series: jammy
 
 comment:
 - 'machines section to decide order of deployment. database sooner = faster'
