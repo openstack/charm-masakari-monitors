@@ -19,7 +19,6 @@ dev_bundles:
 # Rocky disabled until https://review.opendev.org/#/c/647756/ lands in
 # packaging
   - jammy-antelope
-  - kinetic-zed
   - lunar-antelope
 
 smoke_bundles:
@@ -44,5 +43,4 @@ target_deploy_status:
 
 tests_options:
   force_deploy:
-    - kinetic-zed
     - lunar-antelope
