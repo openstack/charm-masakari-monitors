@@ -8,8 +8,8 @@ tags:
 - openstack
 series:
 - jammy
-- kinetic
 - lunar
+- mantic
 requires:
   identity-credentials:
     interface: keystone-credentials
