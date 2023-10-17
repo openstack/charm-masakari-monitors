@@ -20,7 +20,6 @@ dev_bundles:
 # packaging
   - jammy-antelope
   - jammy-bobcat
-  - lunar-antelope
   - mantic-bobcat
 
 smoke_bundles:
@@ -45,5 +44,4 @@ target_deploy_status:
 
 tests_options:
   force_deploy:
-    - lunar-antelope
     - mantic-bobcat
