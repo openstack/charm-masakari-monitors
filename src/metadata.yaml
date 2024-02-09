@@ -5,11 +5,9 @@ summary: Deploys masakari monitors
 description: |
   Deploys masakari monitors which interact with masakari api
 tags:
-- openstack
+  - openstack
 series:
-- jammy
-- lunar
-- mantic
+  - jammy
 requires:
   identity-credentials:
     interface: keystone-credentials
