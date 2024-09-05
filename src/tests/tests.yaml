@@ -13,15 +13,13 @@ configure:
   - zaza.openstack.charm_tests.masakari.setup.create_segments
 
 gate_bundles:
-  - jammy-antelope
-  - jammy-bobcat
-  - jammy-caracal
+  - noble-caracal
 dev_bundles:
 # Rocky disabled until https://review.opendev.org/#/c/647756/ lands in
 # packaging
   - noble-caracal
 smoke_bundles:
-  - jammy-caracal
+  - noble-caracal
 target_deploy_status:
   easyrsa:
     workload-status-message-prefix: Certificate Authority connected.

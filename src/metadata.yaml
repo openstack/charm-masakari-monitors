@@ -6,8 +6,6 @@ description: |
   Deploys masakari monitors which interact with masakari api
 tags:
   - openstack
-series:
-  - jammy
 requires:
   identity-credentials:
     interface: keystone-credentials
