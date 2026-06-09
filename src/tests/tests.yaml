@@ -19,7 +19,6 @@ dev_bundles:
 # Rocky disabled until https://review.opendev.org/#/c/647756/ lands in
 # packaging
   - jammy-antelope
-  - lunar-antelope
 
 smoke_bundles:
   - jammy-zed
@@ -41,6 +40,3 @@ target_deploy_status:
     workload-status: waiting
     workload-status-message-prefix: "Monitor bootstrapped but waiting for number of OSDs to reach expected-osd-count (3)"
 
-tests_options:
-  force_deploy:
-    - lunar-antelope
