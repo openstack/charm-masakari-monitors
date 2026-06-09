@@ -218,7 +218,7 @@ applications:
     channel: latest/edge
 
   masakari-monitors:
-    charm: ../../../masakari-monitors.charm
+    charm: ../../../masakari-monitors_ubuntu@24.04-amd64.charm
 
   hacluster:
     charm: ch:hacluster
