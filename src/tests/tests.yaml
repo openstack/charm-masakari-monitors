@@ -13,17 +13,16 @@ configure:
   - zaza.openstack.charm_tests.masakari.setup.create_segments
 
 gate_bundles:
-  - focal-xena
-  - impish-xena
+  - jammy-zed
 
 dev_bundles:
 # Rocky disabled until https://review.opendev.org/#/c/647756/ lands in
 # packaging
-  - focal-yoga
   - jammy-yoga
+  - jammy-zed
 
 smoke_bundles:
-  - focal-xena
+  - jammy-zed
 
 target_deploy_status:
   easyrsa:
@@ -44,5 +43,4 @@ target_deploy_status:
 
 tests_options:
   force_deploy:
-    - impish-xena
-    - jammy-yoga
+    - jammy-zed
