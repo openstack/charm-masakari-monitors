@@ -9,3 +9,15 @@ options:
     description: |
       Comma-separated list of key=value config flags. These values will be
       placed in the masakarimonitors.conf [DEFAULT] section.
+  monitoring-interval:
+    type: int
+    default: 60
+    description: |
+      Interval, in seconds, between host monitoring checks. Must be
+      between 10 and 300 seconds. Default is 60 seconds.
+  monitoring-samples:
+    type: int
+    default: 1
+    description: |
+      Number of consecutive samples that must confirm a host state change
+      before masakari-monitors acts on it. Must be between 1 and 5. Default is 1.
