@@ -234,7 +234,7 @@ applications:
     options:
       enable-stonith: False
       enable-resources: False
-    channel: yoga/edge
+    channel: jammy/edge
 
   vault:
     num_units: 1
