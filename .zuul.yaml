@@ -1,4 +1,9 @@
 - project:
     templates:
-      - openstack-python3-charm-jobs
-      - openstack-cover-jobs
+      - openstack-python3-charm-jobs-2023.2
+      - openstack-cover-charm-jobs
+    check:
+      jobs:
+        - charmbuild
+    vars:
+      charm_build_name: masakari-monitors
