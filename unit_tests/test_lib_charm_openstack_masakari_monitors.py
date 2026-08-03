@@ -51,3 +51,51 @@ class TestMasakariMonitorsCharm(Helper):
         c.request_credentials()
         keystone_relation.request_credentials.assert_called_once_with(
             'masakari-monitors', project='services')
+
+    def test_validated_monitoring_interval_valid(self):
+        self.patch_object(charmhelpers.core.hookenv, 'config')
+        self.patch_object(charmhelpers.core.hookenv, 'log')
+        self.config.return_value = 60
+        value = masakari_monitors.validated_monitoring_interval(None)
+        self.assertEqual(value, 60)
+        self.log.assert_not_called()
+
+    def test_validated_monitoring_interval_too_low(self):
+        self.patch_object(charmhelpers.core.hookenv, 'config')
+        self.patch_object(charmhelpers.core.hookenv, 'log')
+        self.config.return_value = 5
+        value = masakari_monitors.validated_monitoring_interval(None)
+        self.assertEqual(value, masakari_monitors.MONITORING_INTERVAL_DEFAULT)
+        self.log.assert_called_once()
+
+    def test_validated_monitoring_interval_too_high(self):
+        self.patch_object(charmhelpers.core.hookenv, 'config')
+        self.patch_object(charmhelpers.core.hookenv, 'log')
+        self.config.return_value = 301
+        value = masakari_monitors.validated_monitoring_interval(None)
+        self.assertEqual(value, masakari_monitors.MONITORING_INTERVAL_DEFAULT)
+        self.log.assert_called_once()
+
+    def test_validated_monitoring_samples_valid(self):
+        self.patch_object(charmhelpers.core.hookenv, 'config')
+        self.patch_object(charmhelpers.core.hookenv, 'log')
+        self.config.return_value = 1
+        value = masakari_monitors.validated_monitoring_samples(None)
+        self.assertEqual(value, 1)
+        self.log.assert_not_called()
+
+    def test_validated_monitoring_samples_too_low(self):
+        self.patch_object(charmhelpers.core.hookenv, 'config')
+        self.patch_object(charmhelpers.core.hookenv, 'log')
+        self.config.return_value = 0
+        value = masakari_monitors.validated_monitoring_samples(None)
+        self.assertEqual(value, masakari_monitors.MONITORING_SAMPLES_DEFAULT)
+        self.log.assert_called_once()
+
+    def test_validated_monitoring_samples_too_high(self):
+        self.patch_object(charmhelpers.core.hookenv, 'config')
+        self.patch_object(charmhelpers.core.hookenv, 'log')
+        self.config.return_value = 6
+        value = masakari_monitors.validated_monitoring_samples(None)
+        self.assertEqual(value, masakari_monitors.MONITORING_SAMPLES_DEFAULT)
+        self.log.assert_called_once()
