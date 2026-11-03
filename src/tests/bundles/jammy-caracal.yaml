@@ -239,7 +239,7 @@ applications:
     charm: ch:vault
     to:
       - '21'
-    channel: latest/edge
+    channel: 1.8/stable
 
   placement:
     charm: ch:placement
